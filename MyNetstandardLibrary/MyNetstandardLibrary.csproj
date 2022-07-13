@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+
+    <!--
+      Ecosystem Bomb Announcement
+      https://docs.microsoft.com/dotnet/core/compatibility/core-libraries/6.0/older-framework-versions-dropped
+    -->
+
+    <!--
+      Uncomment to drop the Ecosystem Bomb:
+      "System.Diagnostics.DiagnosticSource doesn't support net5.0. Consider updating your TargetFramework to net6.0 or later."
+    -->
+    <!-- <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="7.0.0-preview.6.22324.4" /> -->
+
+    <!--
+      The following are more confusing to end users. These render
+
+      "System.Diagnostics.DiagnosticSource doesn't support net5.0. Consider updating your TargetFramework to net6.0 or later."
+
+      and
+
+      "System.Text.Encodings.Web doesn't support net5.0. Consider updating your TargetFramework to net6.0 or later."
+
+      ... because they have indirect dependencies on unsupported libraries
+    -->
+    <!-- <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0-preview.6.22324.4" /> -->
+    <!-- <PackageReference Include="System.Text.Json" Version="7.0.0-preview.6.22324.4" /> -->
+
+    <!--
+      This one does render
+      "Microsoft.Extensions.Logging.Abstractions doesn't support net5.0. Consider updating your TargetFramework to net6.0 or later."
+
+      ... however, it is not explicitly called out in the Ecosystem Bomb Announcement
+    -->
+    <!-- <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0-preview.6.22324.4" /> -->
+  </ItemGroup>
+
+</Project>
